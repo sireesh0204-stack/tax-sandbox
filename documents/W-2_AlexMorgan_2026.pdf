@@ -1,0 +1,148 @@
+%PDF-1.4
+%âãÏÓ
+1 0 obj
+<<
+/Type /Catalog
+/Pages 2 0 R
+>>
+endobj
+2 0 obj
+<<
+/Type /Pages
+/Kids [3 0 R]
+/Count 1
+>>
+endobj
+3 0 obj
+<<
+/Type /Page
+/Parent 2 0 R
+/MediaBox [0 0 612 792]
+/Contents 4 0 R
+/Resources <<
+/Font <<
+/F1 5 0 R
+/F2 6 0 R
+>>
+>>
+>>
+endobj
+4 0 obj
+<<
+/Length 5 0 R
+>>
+stream
+BT
+/F1 12 Tf
+72 720 Td
+(Form W-2 Wage and Tax Statement) Tj
+0 -18 Td
+(For filing 2026 tax return) Tj
+0 -36 Td
+/Helvetica-Bold 10 Tf
+(a) Control number: 12345 Tj
+0 -14 Td
+(b) Employer identification number (EIN): 12-3456789 Tj
+0 -14 Td
+(c) Employer's name, address, and ZIP code: Tj
+0 -14 Td
+TechCo Inc. Tj
+0 -12 Td
+1 Microsoft Way Tj
+0 -12 Td
+Redmond, WA 98052 Tj
+0 -18 Td
+/Helvetica 10 Tf
+(d) Employee's social security number: 123-45-6789 Tj
+0 -14 Td
+(e) Employee's first name and initial Last name: Alex Morgan Tj
+0 -14 Td
+(f) Employee's address and ZIP code: Tj
+0 -12 Td
+1420 Bellevue Way NE, Apt 3B Tj
+0 -12 Td
+Bellevue, WA 98004 Tj
+0 -24 Td
+/Helvetica-Bold 10 Tf
+1 Wages, tips, other compensation......................... $ 85,000.00 Tj
+0 -12 Td
+2 Federal income tax withheld............................ $ 12,000.00 Tj
+0 -12 Td
+3 Social security wages.................................. $ 85,000.00 Tj
+0 -12 Td
+4 Social security tax withheld........................... $ 5,270.00 Tj
+0 -12 Td
+5 Medicare wages......................................... $ 85,000.00 Tj
+0 -12 Td
+6 Medicare tax withheld.................................. $ 1,232.50 Tj
+0 -12 Td
+7 Social security tips................................... $ 0.00 Tj
+0 -12 Td
+8 Allocated tips......................................... $ 0.00 Tj
+0 -18 Td
+9 Verification code...................................... Tj
+0 -18 Td
+10 Dependent care benefits............................... $ 0.00 Tj
+0 -12 Td
+11 Nonqualified plans.................................... $ 0.00 Tj
+0 -18 Td
+12a See instructions for box 12.......................... Tj
+0 -12 Td
+13 Statutory employee Retirement plan Third-party sick pay Tj
+0 -12 Td
+[ ] [X] [ ] Tj
+0 -18 Td
+14 Other................................................. Tj
+0 -24 Td
+/Helvetica-Bold 10 Tf
+15 State Employer's state ID number...................... Tj
+0 -12 Td
+16 State wages, tips, etc................................ $ 0.00 Tj
+0 -12 Td
+17 State income tax...................................... $ 0.00 Tj
+0 -12 Td
+18 Local wages, tips, etc................................ $ 0.00 Tj
+0 -12 Td
+19 Local income tax...................................... $ 0.00 Tj
+0 -12 Td
+20 Locality name......................................... Tj
+ET
+endstream
+endobj
+5 0 obj
+<<
+/Length 447
+>>
+endobj
+6 0 obj
+<<
+/Type /Font
+/Subtype /Type1
+/BaseFont /Helvetica
+>>
+endobj
+7 0 obj
+<<
+/Type /Font
+/Subtype /Type1
+/BaseFont /Helvetica-Bold
+>>
+endobj
+xref
+0 8
+0000000000 65535 f 
+0000000010 00000 n 
+0000000060 00000 n 
+0000000117 00000 n 
+0000000210 00000 n 
+0000000375 00000 n 
+0000000543 00000 n 
+0000000639 00000 n 
+trailer
+<<
+/Size 8
+/Root 1 0 R
+>>
+startxref
+735
+%%EOF
