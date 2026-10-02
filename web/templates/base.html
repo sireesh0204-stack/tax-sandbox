@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ProConnect Tax Engine</title>
+    <style>
+        :root {
+            --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
+            --ease-in-out: cubic-bezier(0.77, 0, 0.175, 1);
+            --ease-drawer: cubic-bezier(0.32, 0.72, 0, 1);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            background: #0f172a;
+            color: #f1f5f9;
+            line-height: 1.6;
+            min-height: 100vh;
+        }
+
+        .app-container {
+            display: flex;
+            min-height: 100vh;
+        }
+
+        /* Navigation sidebar */
+        .sidebar {
+            width: 280px;
+            background: rgba(30, 41, 59, 0.95);
+            backdrop-filter: blur(20px);
+            border-right: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 2rem 1.5rem;
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        .logo {
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: #38bdf8;
+            margin-bottom: 2rem;
+            letter-spacing: -0.02em;
+        }
+
+        .nav-item {
+            padding: 0.75rem 1rem;
+            border-radius: 12px;
+            cursor: pointer;
+            transition: all 0.2s var(--ease-out);
+            font-size: 0.9rem;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            color: #94a3b8;
+        }
+
+        .nav-item:hover {
+            background: rgba(56, 189, 248, 0.1);
+            color: #38bdf8;
+            transform: translateX(4px);
+        }
+
+        .nav-item.active {
+            background: rgba(56, 189, 248, 0.15);
+            color: #38bdf8;
+            border-left: 3px solid #38bdf8;
+        }
+
+        .nav-label {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: #64748b;
+            margin: 1.5rem 0 0.75rem 0;
+        }
+
+        .nav-item-icon {
+            width: 18px;
+            height: 18px;
+        }
+
+        /* Main content area */
+        .main-content {
+            flex: 1;
+            padding: 2rem 3rem;
+            overflow-y: auto;
+        }
+
+        .page-header {
+            margin-bottom: 2rem;
+        }
+
+        .page-title {
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            letter-spacing: -0.02em;
+        }
+
+        .page-subtitle {
+            color: #94a3b8;
+            font-size: 1rem;
+        }
+
+        /* Form sections */
+        .form-section {
+            background: rgba(30, 41, 59, 0.6);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 16px;
+            padding: 2rem;
+            margin-bottom: 1.5rem;
+            transition: all 0.3s var(--ease-out);
+        }
+
+        .form-section:hover {
+            border-color: rgba(56, 189, 248, 0.3);
+            transform: translateY(-1px);
+        }
+
+        .form-section-title {
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+            color: #38bdf8;
+        }
+
+        .form-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        .form-label {
+            font-size: 0.875rem;
+            font-weight: 500;
+            color: #cbd5e1;
+        }
+
+        .form-input {
+            background: rgba(15, 23, 42, 0.6);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            padding: 0.75rem 1rem;
+            color: #f1f5f9;
+            font-size: 0.95rem;
+            transition: all 0.2s var(--ease-out);
+            outline: none;
+        }
+
+        .form-input:focus {
+            border-color: #38bdf8;
+            transform: translateY(-1px);
+            box-shadow: 0 0 0 3px rgba(56, 189, 248, 0.2);
+        }
+
+        /* Buttons */
+        .btn {
+            padding: 0.75rem 1.5rem;
+            border-radius: 10px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            cursor: pointer;
+            transition: all 0.2s var(--ease-out);
+            border: none;
+            outline: none;
+        }
+
+        .btn-primary {
+            background: #38bdf8;
+            color: #0f172a;
+        }
+
+        .btn-primary:hover {
+            background: #0ea5e9;
+            transform: translateY(-1px);
+            box-shadow: 0 4px 20px rgba(56, 189, 248, 0.4);
+        }
+
+        .btn-secondary {
+            background: rgba(255, 255, 255, 0.1);
+            color: #f1f5f9;
+        }
+
+        .btn-secondary:hover {
+            background: rgba(255, 255, 255, 0.15);
+        }
+
+        /* Toast notification */
+        .toast-container {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            z-index: 100;
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .toast {
+            animation: slideIn 0.3s var(--ease-drawer);
+        }
+
+        @keyframes slideIn {
+            from {
+                transform: translateY(100px);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        /* Loading state */
+        .loading {
+            display: inline-block;
+            width: 16px;
+            height: 16px;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            border-bottom-color: transparent;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .app-container {
+                flex-direction: column;
+            }
+
+            .sidebar {
+                width: 100%;
+                padding: 1rem;
+            }
+
+            .main-content {
+                padding: 1.5rem;
+            }
+
+            .form-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            *, *::before, *::after {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="app-container">
+        <!-- Sidebar navigation -->
+        <aside class="sidebar">
+            <div class="logo">ProConnect Tax</div>
+            <div id="nav"></div>
+        </aside>
+
+        <!-- Main content -->
+        <main class="main-content">
+            <div class="page-header">
+                <h1 class="page-title">Form 1040: Individual Income Tax Return</h1>
+                <p class="page-subtitle">David Vance · High Net Worth Profile · 2026 Tax Year</p>
+            </div>
+
+            <div id="content"></div>
+        </main>
+    </div>
+
+    <div class="toast-container" id="toast-container"></div>
+
+    <script>
+        // Triple-gate air-gapping: Client-side state management
+        let navigation = [
+            { id: 'overview', label: 'Overview', icon: '📊' },
+            { id: 'personal', label: 'Personal Information', icon: '👤' },
+            { id: 'income', label: 'Income Section', icon: '💰' },
+            { id: 'deductions', label: 'Deductions & Credits', icon: '📎' },
+            { id: 'taxes', label: 'Tax & Payments', icon: '💸' },
+            { id: 'review', label: 'Return Review', icon: '✓' },
+            { id: 'mef', label: 'IRS MeF XML', icon: '📤' },
+        ];
+
+        function renderNavigation() {
+            const nav = document.getElementById('nav');
+            nav.innerHTML = navigation.map((item, index) => `
+                <div class="nav-label">${item.label}</div>
+                <div class="nav-item" onclick="navigateTo(${index})" data-index="${index}">
+                    <span class="nav-item-icon">${item.icon}</span>
+                    ${item.label}
+                </div>
+            `).join('');
+        }
+
+        function navigateTo(index) {
+            document.querySelectorAll('.nav-item').forEach(el => el.classList.remove('active'));
+            document.querySelectorAll('.nav-item')[index].classList.add('active');
+            showToast('Navigated to ${navigation[index].label}');
+        }
+
+        function showToast(message) {
+            const container = document.getElementById('toast-container');
+            const toast = document.createElement('div');
+            toast.className = 'toast';
+            toast.style.cssText = `
+                background: rgba(30, 41, 59, 0.95);
+                border: 1px solid rgba(56, 189, 248, 0.3);
+                padding: 1rem 1.5rem;
+                border-radius: 10px;
+                color: white;
+                font-size: 0.9rem;
+            `;
+            toast.textContent = message;
+            container.appendChild(toast);
+
+            setTimeout(() => {
+                toast.remove();
+            }, 3000);
+        }
+    </script>
+</body>
+</html>
