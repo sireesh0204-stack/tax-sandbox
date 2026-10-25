@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 120" width="400" height="120" fill="none">
+  <defs>
+    <!-- Rusty Copper and Antique Bronze Gradient Mix -->
+    <linearGradient id="copperBronzeGrad" x1="50" y1="60" x2="370" y2="60" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#D96B43" />
+      <stop offset="30%" stop-color="#E29555" />
+      <stop offset="65%" stop-color="#A85A2E" />
+      <stop offset="100%" stop-color="#CD7F32" />
+    </linearGradient>
+  </defs>
+  <!-- ASZSD Continuous Wireframe Monogram: a -> S1 -> Z -> S2 -> D -->
+  <path
+    d="M 90,25 C 50,25 50,95 90,95 L 165,95 L 105,25 L 240,25 L 180,95 L 315,95 L 255,25 L 330,25 C 370,25 370,95 330,95"
+    stroke="url(#copperBronzeGrad)"
+    stroke-width="7"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+  />
+</svg>

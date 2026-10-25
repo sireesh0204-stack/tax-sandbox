@@ -1,3 +1,7 @@
+<p align="center">
+  <img src="assets/logo/aszsd_monogram.svg" alt="ASZSD Monogram" width="300" />
+</p>
+
 # Tax Sandbox — US tax preparation simulator (Go)
 
 [![Go](https://img.shields.io/badge/Go-1.22+-00ADD9?logo=go&logoColor=white)](https://go.dev/dl/)
